@@ -8,12 +8,15 @@ import jwt from 'jsonwebtoken'
  */
 export const updateUserToken = async (req, res, next) => {
   try {
+    // Find the user based on the provided ID
     const user = await User.findOne({ _id: req.body.id })
-    
+
+    // Return an error if the user is not found
     if (!user) {
       return next(createError(404, 'User not found...'))
     }
 
+    // Assign a new JWT token for the user and update the access_token cookie
     const token = jwt.sign({ id: user._id }, process.env.JWT)
     const { password, ...others } = user.toJSON()
 
