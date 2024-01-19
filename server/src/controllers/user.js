@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken'
 export const updateUserToken = async (req, res, next) => {
   try {
     const user = await User.findOne({ _id: req.body.id })
+    
     if (!user) {
       return next(createError(404, 'User not found...'))
     }
