@@ -1,6 +1,9 @@
 import mongoose from 'mongoose'
 
 
+/** 
+ * Schema for user transactions 
+ */
 const TransactionSchema = new mongoose.Schema(
   {
     amount: {
@@ -16,6 +19,9 @@ const TransactionSchema = new mongoose.Schema(
   },
 )
 
+/**
+ * Schema for user information, including an array of transactions
+ */
 const UserSchema = new mongoose.Schema(
   {
     email: {
